@@ -2,6 +2,7 @@ from telethon import TelegramClient
 import os
 from dotenv import load_dotenv
 import asyncio
+import importlib
 
 # Load environment variables
 load_dotenv()
@@ -18,18 +19,7 @@ bot_token = os.getenv("BOT_TOKEN")
 # log_channel_id = int(os.getenv("LOG_CHANNEL_ID"))
 
 # If bot needs to store data permanently somewhere
-# data_folder = os.getenv("DATA_FOLDER")
-
-# If the bot is using AI
-# gemini_key = os.getenv("GOOGLE_API_KEY")
-
-# read system prompt
-# Load the text file
-# with open(f"{data_folder}/sysprompt.txt", "r", encoding="utf-8") as f:
-#    sysprompt = f.read()
-
-# test if the system prompt is loading
-# print(sysprompt)
+data_folder = os.getenv("DATA_FOLDER")
 
 # convert sudo users env value into a python list
 # sudo_users = [int(x.strip()) for x in sudo_env.split(',')]
@@ -40,31 +30,33 @@ bot_token = os.getenv("BOT_TOKEN")
 # for i in range(len(sudo_users)):
 #    print(sudo_users[i])
 
+# Ensure data folder exists
+if data_folder and not os.path.exists(data_folder):
+    os.makedirs(data_folder, exist_ok=True)
+
 # init bot
 bot = TelegramClient(f'{data_folder}/bot', api_id, api_hash)
 bot.start(bot_token=bot_token)
 
 # import setup utils
-from handlers.init import registercommands, logstart, handlers
+from handlers.init import registercommands #, logstart
 
-# import handlers and register
-from handlers.start import register as register_start
-register_start(bot)
-
-from handlers.help import register as register_help
-logregister(bot, log_channel_id, "help", register_help)
-
-# from handlers.about import register as register_about
-# logregister(bot, log_channel_id, "about", register_about)
-
+# auto registerer for commands
+for filename in os.listdir("handlers"):
+    if filename.endswith(".py") and filename not in ["init.py"]:
+        module_name = filename[:-3]  # removes the .py
+        module = importlib.import_module(f"handlers.{module_name}")
+        if hasattr(module, "register"):
+            module.register(bot)
+            print(f"Loaded handler: {module_name}")
 
 if __name__ == '__main__':
     print("Starting bot...")
 
     async def main():
         await registercommands(bot)
-# for logging bot starting
-#         await logstart(bot, log_channel_id)
+        # for logging bot startup
+        # await logstart(bot, log_channel_id)
         await bot.run_until_disconnected()
     with bot:
         bot.loop.run_until_complete(main())
