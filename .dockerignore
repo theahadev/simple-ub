@@ -1,0 +1,25 @@
+.git/
+.gitignore
+.gitattributes
+
+__pycache__/
+*.py[cod]
+
+.vscode/
+
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+README.md
+*.md
+docs/
+
+.github/
+
+*.session
+*.session-journal
+data/
+
+# Logs
+*.log

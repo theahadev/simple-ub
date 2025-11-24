@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+
+*.log
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+*.session
+*.session-journal
+
+data/
+commands.txt
