@@ -1,28 +1,25 @@
-# Telethon Core
+# Simple UserBot
 
-A modular Telegram bot framework built with [Telethon](https://github.com/LonamiWebs/Telethon).
+An easy to use Telegram UserBot built using [telethon-core](https://github.com/ahakkoca07/telethon-core).
 
 ## Features
 
-- **Highly Modular**: Only write your modules and drop them in the `handlers/` folder
-- **Docker Support**: Because who doesn't like Docker?
-
-This framework is really basic for easy development, so i haven't added much modules by default.
+Coming soon!
 
 ## Requirements
 
 - Python 3.11 or higher
 - Telegram API credentials (API ID and API Hash)
-- Telegram Bot Token from [@BotFather](https://t.me/botfather)
-
+- Telethon session string
+ 
 ## Installation
 
 ### Using Docker (Recommended)
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/ahakkoca07/telethon-core.git
-cd telethon-core
+git clone https://github.com/ahakkoca07/simple-ub.git
+cd simple-ub
 ```
 
 2. Create a `.env` file with your credentials:
@@ -42,8 +39,8 @@ docker-compose up -d
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/ahakkoca07/telethon-core.git
-cd telethon-core
+git clone https://github.com/ahakkoca07/simple-ub.git
+cd simple-ub
 ```
 
 2. Install dependencies:
