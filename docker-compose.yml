@@ -5,6 +5,7 @@ services:
       dockerfile: Dockerfile
     container_name: telethon-core
     restart: unless-stopped
+    user: "1000:1000"
     volumes:
       - .:/app/
     environment:
