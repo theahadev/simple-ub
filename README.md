@@ -18,6 +18,7 @@ An easy to use Telegram UserBot built using [telethon-core](https://github.com/t
 - [ ] Add installer/setup scripts
 - [ ] C O M M A N D   P R O X Y
 - [ ] make command proxy actually work
+- [ ] add auto ota updater ([@ZG089](https://github.com/ZG089) for the idea)
 
 
 # The README file is not ready yet!

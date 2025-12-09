@@ -18,7 +18,7 @@ session_string = os.getenv("SESSION_STRING")
 # sudo_env = os.getenv('SUDO_USERS')
 
 # Bot log channel id, better to have
-log_channel_id = int(os.getenv("LOG_CHANNEL_ID"))
+log_channel_id = int(os.getenv("LOG_CHANNEL_ID")) if os.getenv("LOG_CHANNEL_ID") else None
 
 # If bot needs to store data permanently somewhere
 data_folder = os.getenv("DATA_FOLDER")
