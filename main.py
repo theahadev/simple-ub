@@ -1,4 +1,5 @@
 from telethon import TelegramClient
+from telethon.sessions import StringSession
 import os
 from dotenv import load_dotenv
 import asyncio
@@ -11,6 +12,7 @@ load_dotenv()
 api_id = int(os.getenv("API_ID"))
 api_hash = os.getenv("API_HASH")
 bot_token = os.getenv("BOT_TOKEN")
+session_string = os.getenv("SESSION_STRING")
 
 # If the bot has admin specific behaivour, set sudo users
 # sudo_env = os.getenv('SUDO_USERS')
@@ -34,12 +36,12 @@ data_folder = os.getenv("DATA_FOLDER")
 if data_folder and not os.path.exists(data_folder):
     os.makedirs(data_folder, exist_ok=True)
 
-# init bot
-bot = TelegramClient(f'{data_folder}/bot', api_id, api_hash)
-bot.start(bot_token=bot_token)
+# init bot with session string
+bot = TelegramClient(StringSession(session_string), api_id, api_hash)
+bot.start()
 
 # import setup utils
-from handlers.init import registercommands #, logstart
+# from handlers.init import logstart
 
 # auto registerer for commands
 for filename in os.listdir("handlers"):
@@ -54,7 +56,6 @@ if __name__ == '__main__':
     print("Starting bot...")
 
     async def main():
-        await registercommands(bot)
         # for logging bot startup
         # await logstart(bot, log_channel_id)
         await bot.run_until_disconnected()

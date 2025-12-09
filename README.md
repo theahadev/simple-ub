@@ -3,7 +3,10 @@
 An easy to use Telegram UserBot built using [telethon-core](https://github.com/ahakkoca07/telethon-core).
 
 ## TODO
-- [ ] make the bot run correctly
+- [x] make the bot run correctly
+- [ ] add trigger character
+- [ ] add su/sudo user check
+- [ ] add sqlite/mongodb/json to store config
 - [ ] add the ability to see command/handler list and remove handlers when needed
 - [ ] add crash/error logging
   - add a wrapper script for running the main bot
@@ -13,6 +16,8 @@ An easy to use Telegram UserBot built using [telethon-core](https://github.com/a
 - [ ] add new instructions for init script in readme
 - [ ] update readme for the new env file
 - [ ] Add installer/setup scripts
+- [ ] C O M M A N D   P R O X Y
+- [ ] make command proxy actually work
 
 ## Features
 
