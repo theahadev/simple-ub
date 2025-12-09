@@ -1,6 +1,6 @@
 # Simple UserBot
 
-An easy to use Telegram UserBot built using [telethon-core](https://github.com/ahakkoca07/telethon-core).
+An easy to use Telegram UserBot built using [telethon-core](https://github.com/theahadev/telethon-core).
 
 ## TODO
 - [x] make the bot run correctly
@@ -12,12 +12,15 @@ An easy to use Telegram UserBot built using [telethon-core](https://github.com/a
   - add a wrapper script for running the main bot
   - manage crashes and restarts
 - [ ] update the docker compose
-- [ ] make a init script
+- [x] make a init script
 - [ ] add new instructions for init script in readme
 - [ ] update readme for the new env file
 - [ ] Add installer/setup scripts
 - [ ] C O M M A N D   P R O X Y
 - [ ] make command proxy actually work
+
+
+# The README file is not ready yet!
 
 ## Features
 
@@ -35,7 +38,7 @@ Coming soon!
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/ahakkoca07/simple-ub.git
+git clone https://github.com/theahadev/simple-ub.git
 cd simple-ub
 ```
 
@@ -56,7 +59,7 @@ docker-compose up -d
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/ahakkoca07/simple-ub.git
+git clone https://github.com/theahadev/simple-ub.git
 cd simple-ub
 ```
 
@@ -167,8 +170,8 @@ docker compose logs -f
 
 ## Security Notes
 
-- Keep your API id and hash secure
-- Make sure to add rate limiting and proper logging when using this core
+- Keep your .env file and session string secure.
+- Do NOT install untrusted/sketchy modules. For official modules that are approved by the developer, check out [@simpleub](https://t.me/simpleub).
 
 ## Contributing
 
@@ -190,5 +193,3 @@ If you encounter any issues or have questions:
 - Check the [Telethon documentation](https://docs.telethon.dev/)
 
 ---
-
-**Note**: This is a core framework. Command handlers use placeholder messages that should be customized.
