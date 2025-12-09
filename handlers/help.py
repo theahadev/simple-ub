@@ -1,7 +1,7 @@
 from telethon import events
 
 def register(bot):
-    @bot.on(events.NewMessage(pattern='/help'))
+    @bot.on(events.NewMessage(pattern='~help'))
     async def help_handler(event):
         # if in pms
         if event.is_private:
