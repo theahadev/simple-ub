@@ -14,4 +14,4 @@ venv.bak/
 *.session-journal
 
 data/
-commands.txt
+session_string.txt
