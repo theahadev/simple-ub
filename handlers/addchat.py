@@ -1,6 +1,6 @@
 from telethon import events
 
-def register(bot):
+def register(bot, trigger_char="."): # for compatibility with main auto registerer
     @bot.on(events.ChatAction)
     async def addchat_handler(event):
         bot_me = await bot.get_me()

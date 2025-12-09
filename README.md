@@ -4,7 +4,7 @@ An easy to use Telegram UserBot built using [telethon-core](https://github.com/a
 
 ## TODO
 - [x] make the bot run correctly
-- [ ] add trigger character
+- [x] add trigger character
 - [ ] add su/sudo user check
 - [ ] add sqlite/mongodb/json to store config
 - [ ] add the ability to see command/handler list and remove handlers when needed
@@ -82,6 +82,7 @@ Create a `.env` file in the root directory with the following variables:
 | `API_HASH` | Telegram API Hash from [my.telegram.org](https://my.telegram.org) | Yes |
 | `BOT_TOKEN` | Bot token from [@BotFather](https://t.me/botfather) | Yes |
 | `DATA_FOLDER` | Directory for storing bot session and data (default: `./data`) | Yes |
+| `TRIGGER_CHAR` | Character used to trigger commands (default: `~`) | No |
 | `SUDO_USERS` | Comma-separated list of admin IDs | No |
 | `LOG_CHANNEL_ID` | Channel ID for logging | No |
 
@@ -109,8 +110,8 @@ To add a new command handler, create a Python file in the `handlers/` directory:
 ```python
 from telethon import events
 
-def register(bot):
-    @bot.on(events.NewMessage(pattern='/command'))
+def register(bot, trigger_char="~"):
+    @bot.on(events.NewMessage(pattern=f'{trigger_char}command'))
     async def command_handler(event):
         if event.is_private:
             await event.reply("Response in private chats")
@@ -125,8 +126,10 @@ The bot will automatically load and register your handler on startup.
 
 ## Available Commands
 
-- `/start` - Start the bot (shows different messages in PMs, groups, and channels)
-- `/help` - Display help information (context-aware responses)
+- `~start` - Start the bot (shows different messages in PMs, groups, and channels)
+- `~help` - Display help information (context-aware responses)
+
+> **Note**: The trigger character can be customized via the `TRIGGER_CHAR` environment variable.
 
 ## Development
 
